@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+
+<div class='container'>
+    <br>
+    <div>
+        <h1>Shopping list</h1>
+    </div>
+    <div id="table">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    </div>
+</div>
+</html>
+<script>
+    $(()=>{
+        getFruit();
+    })
+
+    function addFruit(product){
+        $('#table').append(`<tr><th>${product.name}</th> <th>$${product.price}</th> </tr>`)
+    }
+
+    function getFruit(){
+        $.get('http://localhost:3000/products/fruit',(product)=>{
+            product.forEach(addFruit);
+        })
+    }
+</script>
